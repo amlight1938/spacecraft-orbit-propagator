@@ -14,7 +14,7 @@ const double earthRadius = 6378000; // meters
 // simulation constants
 // ------------------
 const double dt = 5; //seconds
-const int numSteps = 1000;
+const int numSteps = 20000;
 const std::string filepath = "./output/orbit.csv"; //from project root
 
 // ------------------
@@ -25,9 +25,9 @@ const double rx0 = 6778000;
 const double ry0 = 0;
 const double rz0 = 0;
 //m/s
-const double vx0 = 0;
-const double vy0 = 7670;
-const double vz0 = 0;
+const double vx0 = 3452;
+const double vy0 = 5670;
+const double vz0 = 4000;
 
 
 int main(){
