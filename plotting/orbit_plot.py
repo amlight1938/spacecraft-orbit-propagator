@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
-filepath = "output/orbit.csv"
+filepath = "output/rk4-orbit.csv"
 
 #create 2d array of data
 data = np.genfromtxt(filepath, delimiter=',', skip_header=1)

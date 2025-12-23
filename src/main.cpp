@@ -2,6 +2,8 @@
 #include "integrator.h"
 #include "io.h"
 #include <string>
+#include "propagator.h"
+#include "IO/csv_orbit_logger.h"
 
 // ------------------
 // physical constants
@@ -14,8 +16,10 @@ const double earthRadius = 6378000; // meters
 // simulation constants
 // ------------------
 const double dt = 5; //seconds
-const int numSteps = 20000;
-const std::string filepath = "./output/orbit.csv"; //from project root
+const size_t numSteps = 20000;
+const std::string rk4Filepath = "./output/rk4-orbit.csv"; //from project root
+const std::string eulerFilepath = "./output/euler-orbit.csv"; //from project root
+const bool logOutput = true;
 
 // ------------------
 // initial conditions
@@ -31,31 +35,26 @@ const double vz0 = 4000;
 
 
 int main(){
+    State initialState{
+        rx0, ry0, rz0,
+        vx0, vy0, vz0
+    };
 
-    State currentState;
-    currentState.rx = rx0;
-    currentState.ry = ry0;
-    currentState.rz = rz0;
-    currentState.vx = vx0;
-    currentState.vy = vy0;
-    currentState.vz = vz0;
+    OrbitObserver* eulerObserver = nullptr;
+    OrbitObserver* rk4Observer = nullptr;
+    CsvOrbitLogger eulerLogger = CsvOrbitLogger(eulerFilepath);
+    CsvOrbitLogger rk4Logger = CsvOrbitLogger(rk4Filepath);
 
-    //open file and write header. exit if not succesful
-    if(!openFile(filepath)){
-        std::cerr << "Error opening file";
-        return 1;
+    if(logOutput){
+        eulerObserver = &eulerLogger;
+        rk4Observer = &rk4Logger;
     }
 
-    writeHeader();
-    writeLine(currentState, 0);
+    State eulerFinalState = propagateOrbit(initialState, eulerStep, mu, dt, numSteps, eulerObserver);
 
-    for(size_t i = 1; i < numSteps; i++){
-        State newState = eulerStep(currentState, mu, dt);
-        writeLine(newState,i * dt);
-        currentState = newState;
-    }
+    State rk4FinalState = propagateOrbit(initialState, rk4, mu, dt, numSteps, rk4Observer);
     
-    closeFile();
-
     return 0;
 }
+
+
