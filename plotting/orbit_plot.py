@@ -47,6 +47,7 @@ ax.plot_surface(x,y,z,color ='blue', alpha=0.5,rstride=3,cstride=3,)
 ax.plot(euler["rx"], euler["ry"], euler["rz"], label="Euler", color='orange')
 ax.plot(rk4["rx"], rk4["ry"], rk4["rz"], label="RK4", color='g')
 ax.scatter(periapsis[0], periapsis[1], periapsis[2], color = 'r', label='Periapsis')
+ax.scatter(rk4["rx"][1], rk4["ry"][1], rk4["rz"][1], color = 'b', label='Initial State')
 
 plt.legend()
 plt.show()
