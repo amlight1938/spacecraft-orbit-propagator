@@ -35,15 +35,14 @@ Perturbations (drag, J2, third-body effects) are intentionally excluded to isola
 ## Initial State Vectors Shown Above
 x = [r<sub>x</sub>, r<sub>y</sub>, r<sub>z</sub>, v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>]
 
-Case 1: LEO Circular
-x = [6778000.0, 0.0, 0.0, 0.0, 7668.6, 0.0]
+Case 1: MEO Inclined
+x = [16378000.0, 0.0, 0.0, 1000.0, 3000.0, 3000.0]
 
 Case 2: LEO Elliptical
 x = [6878000.0, 0.0, 0.0, 0.0, 9000.0, 0.0]
 
-Case 3: MEO Inclined
-x = [16378000.0, 0.0, 0.0, 1000.0, 3000.0, 3000.0]
-
+Case 3: LEO Circular
+x = [6778000.0, 0.0, 0.0, 0.0, 7668.6, 0.0]
 
 
 ## Build and Run
