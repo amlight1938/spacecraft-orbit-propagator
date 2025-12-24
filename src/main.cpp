@@ -4,6 +4,7 @@
 #include <string>
 #include "propagator.h"
 #include "IO/csv_orbit_logger.h"
+#include <cmath>
 
 // ------------------
 // physical constants
@@ -16,7 +17,7 @@ const double earthRadius = 6378000; // meters
 // simulation constants
 // ------------------
 const double dt = 5; //seconds
-const size_t numSteps = 20000;
+const size_t numSteps = 10000;
 const std::string rk4Filepath = "./output/rk4-orbit.csv"; //from project root
 const std::string eulerFilepath = "./output/euler-orbit.csv"; //from project root
 const bool logOutput = true;
@@ -24,15 +25,27 @@ const bool logOutput = true;
 // ------------------
 // initial conditions
 // ------------------
-//meters
-const double rx0 = 6778000;
-const double ry0 = 0;
-const double rz0 = 0;
-//m/s
-const double vx0 = 3452;
-const double vy0 = 5670;
-const double vz0 = 4000;
+// //CIRCULAR
+// // meters (ECI frame)
+// const double rx0 = 6778000.0;   // Earth radius (6378 km) + 400 km
+// const double ry0 = 0.0;
+// const double rz0 = 0.0;
 
+// // m/s (circular orbit velocity)
+// const double vx0 = 0.0;
+// const double vy0 = 7668.6;
+// const double vz0 = 0.0;
+
+//ELLIPTICAL
+// meters (ECI frame — start at perigee on +X axis)
+const double rx0 = 8078000.0;   // Earth radius (6378 km) + 700 km
+const double ry0 = 0.0;
+const double rz0 = 0.0;
+
+// m/s (perigee velocity, purely tangential)
+const double vx0 = 1000.0;
+const double vy0 = 6423.0;
+const double vz0 = 5000.0;
 
 int main(){
     State initialState{

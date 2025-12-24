@@ -1,50 +1,53 @@
-import numpy as np
 import matplotlib.pyplot as plt
-import csv
+import pandas as pd
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D 
 
-filepath = "output/rk4-orbit.csv"
+eulerFilepath = "output/euler-orbit.csv"
+rk4Filepath = "output/rk4-orbit.csv"
+earth_radius = 6378000 #meters
 
-#create 2d array of data
-data = np.genfromtxt(filepath, delimiter=',', skip_header=1)
+#reading csv
+euler = pd.read_csv(eulerFilepath)
+rk4 = pd.read_csv(rk4Filepath)
 
-time = data[:,0]
-rx = data[:,1]
-ry = data[:,2]
-rz = data[:,3]
-
-r = np.sqrt(rx**2 + ry**2 + rz**2)
-idx_periapsis = np.argmin(r)
-x_periapsis = rx[idx_periapsis]
-y_periapsis = ry[idx_periapsis]
-z_periapsis = rz[idx_periapsis]
-
+#creating figure
+plt.style.use('fast')
 figure = plt.figure()
-ax = plt.axes(projection='3d')
-ax.plot(rx,ry,rz)
-ax.scatter(x_periapsis,y_periapsis,z_periapsis, color='red')
-ax.set_title("Euler Orbit Propagation")
+ax = plt.axes(111, projection='3d')
+ax.grid(False)
+ax.set_title("Euler vs Runge-Kutta 4 Orbit Propagation")
 ax.set_xlabel('x (m)')
 ax.set_ylabel('y (m)')
 ax.set_zlabel('z (m)')
-figure.show()
 
-#2d plot
-figure1 = plt.figure()
-ax2 = plt.axes()
-ax2.plot(rx, ry)
-ax2.scatter(x_periapsis, y_periapsis, color='red', label="Periapsis")
-ax2.set_title("Euler Orbit Propagation")
-ax2.set_xlabel("x (m)")
-ax2.set_ylabel("y (m)")
-ax2.axis("equal")
-ax2.legend()
+#calculate periapsis
+rMag = np.sqrt(euler["rx"]**2 + euler["ry"]**2 + euler["rz"]**2)
+idx_periapsis = np.argmin(rMag)
+periapsis = (rk4["rx"][idx_periapsis], rk4["ry"][idx_periapsis], rk4["rz"][idx_periapsis])
+
+#prepare to plot earth
+theta = np.linspace(0, np.pi, 50)
+phi = np.linspace(0, 2*np.pi, 50)
+
+x = earth_radius * np.outer(np.sin(theta), np.cos(phi))
+y = earth_radius * np.outer(np.sin(theta), np.sin(phi))
+z = earth_radius * np.outer(np.cos(theta),np.ones(np.size(phi)))
+
+all_vals = np.concatenate([euler["rx"], euler["ry"], euler["rz"]])
+minAxis = np.min(all_vals)
+maxAxis = np.max(all_vals)
+ax.set_xlim(minAxis, maxAxis)
+ax.set_ylim(minAxis, maxAxis)
+ax.set_zlim(minAxis, maxAxis)
+ax.set_box_aspect([1, 1, 1])
+
+#plot orbits and earth
+ax.plot_surface(x,y,z,color ='blue', alpha=0.5,rstride=3,cstride=3,)
+ax.plot(euler["rx"], euler["ry"], euler["rz"], label="Euler", color='orange')
+ax.plot(rk4["rx"], rk4["ry"], rk4["rz"], label="RK4", color='g')
+ax.scatter(periapsis[0], periapsis[1], periapsis[2], color = 'r', label='Periapsis')
+
+plt.legend()
 plt.show()
 
-
-
-# plt.figure()
-# plt.plot(time, r)
-# plt.title("Radius over time")
-# plt.xlabel("Time (s)")
-# plt.ylabel("Radius (m)")
-# plt.show()
