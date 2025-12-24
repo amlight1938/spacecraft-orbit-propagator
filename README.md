@@ -4,17 +4,15 @@
 
 A C++ two-body orbital dynamics propagator implementing Euler and 4th-order Runge–Kutta (RK4) numerical integration methods for spacecraft trajectory simulation. The software is designed using flight software–inspired principles with deterministic execution and explicit state representation. Python is used for post-processing, data formatting, and trajectory visualization.
 
-<p align="center">
-  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/High%20altitude%20inclined.JPG" height="220" alt="MEO Inclined"/>
-  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20elliptical.JPG" height="220" alt="LEO Elliptical"/>
-  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20Circular.JPG" height="220" alt="LEO Circular"/>
-</p>
-
-## Features
 - Two-body spacecraft state propagation using Euler and Runge-Kutta 4th order integrators
 - File-based state output for analysis and verification
 - Python-based post-processing and 3D trajectory visualization
 
+<p align="center">
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/High%20altitude%20inclined.JPG" height="240" alt="MEO Inclined"/>
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20elliptical.JPG" height="240" alt="LEO Elliptical"/>
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20Circular.JPG" height="240" alt="LEO Circular"/>
+</p>
 
 ## Design Considerations
 The propagator is structured using flight software–inspired design principles with an emphasis on determinism, separation of concerns, and verifiability.
@@ -33,7 +31,7 @@ v̇ = −μ r / ||r||³
 Perturbations (drag, J2, third-body effects) are intentionally excluded to isolate numerical integration behavior.
 
 
-## Initial State Vectors
+## Initial State Vectors Shown Above
 x = [r<sub>x</sub>, r<sub>y</sub>, r<sub>z</sub>, v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>]
 
 Case 1: LEO Circular
@@ -60,7 +58,6 @@ python .\plotting\orbit_plot.py
 
 
 ## Future Work
-Future work could include:
 - Add higher-fidelity force models (e.g., J2, drag, third-body effects)
 - Implement adaptive numerical integrators
 - Extend the framework to support impulsive spacecraft maneuvers (Δv burns) for trajectory shaping and mission analysis
