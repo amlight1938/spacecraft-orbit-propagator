@@ -4,6 +4,7 @@
 
 A C++ two-body orbital dynamics propagator implementing Euler and 4th-order Runge–Kutta (RK4) numerical integration methods for spacecraft trajectory simulation. The software is designed using flight software–inspired principles with deterministic execution and explicit state representation. Python is used for post-processing, data formatting, and trajectory visualization.
 
+### Features
 - Two-body spacecraft state propagation using Euler and Runge-Kutta 4th order integrators
 - File-based state output for analysis and verification
 - Python-based post-processing and 3D trajectory visualization
