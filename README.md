@@ -5,9 +5,9 @@
 A C++ two-body orbital dynamics propagator implementing Euler and 4th-order Runge–Kutta (RK4) numerical integration methods for spacecraft trajectory simulation. The software is designed using flight software–inspired principles with deterministic execution and explicit state representation. Python is used for post-processing, data formatting, and trajectory visualization.
 
 <p align="center">
-  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/High%20altitude%20inclined.JPG" height="180" alt="MEO Inclined"/>
-  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20elliptical.JPG" height="180" alt="LEO Elliptical"/>
-  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20Circular.JPG" height="180" alt="LEO Circular"/>
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/High%20altitude%20inclined.JPG" height="220" alt="MEO Inclined"/>
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20elliptical.JPG" height="220" alt="LEO Elliptical"/>
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20Circular.JPG" height="220" alt="LEO Circular"/>
 </p>
 
 ## Features
