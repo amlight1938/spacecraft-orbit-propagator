@@ -6,6 +6,11 @@ A C++ two-body orbital dynamics propagator implementing Euler and 4th-order Rung
 
 ![MEO Inclined](https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/High%20altitude%20inclined.JPG) ![LEO Elliptical](https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20elliptical.JPG) ![LEO Circular](https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20Circular.JPG)
 
+<p align="center">
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/High%20altitude%20inclined.JPG" width="30%" alt="Image 1 description"/>
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20elliptical.JPG" width="30%" alt="Image 2 description"/>
+  <img src="https://github.com/amlight1938/spacecraft-orbit-propagator/blob/main/Images/LEO%20Circular.JPG" width="30%" alt="Image 3 description"/>
+</p>
 
 ## Features
 - Two-body spacecraft state propagation using Euler and Runge-Kutta 4th order integrators
