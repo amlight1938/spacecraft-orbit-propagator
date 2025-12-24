@@ -26,7 +26,7 @@ Perturbations (drag, J2, third-body effects) are intentionally excluded to isola
 ---
 
 ## Initial State Vectors
-x = [r<sub>x</sub>,]
+x = [r<sub>x</sub>, r<sub>y</sub>, r<sub>z</sub>, v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>]
 
 Case 1: LEO Circular
 x = [6778000.0, 0.0, 0.0, 0.0, 7668.6, 0.0]
@@ -42,6 +42,8 @@ x = [16378000.0, 0.0, 0.0, 1000.0, 3000.0, 3000.0]
 ### Build and Run
 ```
 g++ src/main.cpp src/dynamics.cpp src/integrator.cpp src/state.cpp src/propagator.cpp src/IO/csv_orbit_logger.cpp -o orbit
+```
+```
 .\orbit
 ```
 ```
@@ -51,4 +53,7 @@ python .\plotting\orbit_plot.py
 ---
 
 ### Future Work
-
+Future work could include:
+- Add higher-fidelity force models (e.g., J2, drag, third-body effects)
+- Implement adaptive numerical integrators
+- Extend the framework to support impulsive spacecraft maneuvers (Δv burns) for trajectory shaping and mission analysis
